@@ -1,0 +1,686 @@
+{
+  "patients": [
+    {
+      "id": "1",
+      "hospitalId": "UR011",
+      "firstName": "Betty",
+      "middleName": "Ann",
+      "lastName": "Taylor",
+      "fullName": "Betty Ann Taylor",
+      "gender": "female",
+      "birthDate": "1952-10-12",
+      "age": 73,
+      "conditions": [
+        {
+          "id": 1,
+          "name": "Epilepsy",
+          "status": "active",
+          "onsetDate": "2020-08-15",
+          "notes": "Well-controlled epilepsy, occasional balance concerns."
+        }
+      ],
+      "medications": [
+        {
+          "id": 1,
+          "name": "Phenytoin 300mg, Citalopram 20mg",
+          "status": "active",
+          "dateAsserted": "2025-09-20"
+        }
+      ],
+      "observations": [
+        {
+          "id": 1,
+          "type": "Abbreviated Mental Test Score",
+          "value": 8,
+          "interpretation": "AMTS mildly impaired - 8/10",
+          "date": "2025-09-20T12:00:00Z"
+        }
+      ],
+      "immunizations": [
+        {
+          "id": 1,
+          "vaccine": "Influenza vaccine",
+          "status": "completed",
+          "date": "2025-04-22"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "hospitalId": "UR012",
+      "firstName": "Paul",
+      "middleName": "Richard",
+      "lastName": "Anderson",
+      "fullName": "Paul Richard Anderson",
+      "gender": "male",
+      "birthDate": "1962-03-25",
+      "age": 63,
+      "conditions": [
+        {
+          "id": 2,
+          "name": "Myocardial infarction",
+          "status": "inactive",
+          "onsetDate": "2022-11-08",
+          "notes": "Previous MI, now fully recovered with regular exercise."
+        }
+      ],
+      "medications": [
+        {
+          "id": 2,
+          "name": "Aspirin 81mg, Atorvastatin 40mg",
+          "status": "active",
+          "dateAsserted": "2025-09-20"
+        }
+      ],
+      "observations": [
+        {
+          "id": 2,
+          "type": "Abbreviated Mental Test Score",
+          "value": 10,
+          "interpretation": "AMTS intact - 10/10",
+          "date": "2025-09-20T12:00:00Z"
+        }
+      ],
+      "immunizations": [
+        {
+          "id": 2,
+          "vaccine": "COVID-19 booster",
+          "status": "completed",
+          "date": "2025-05-10"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "hospitalId": "UR003",
+      "firstName": "Linh",
+      "middleName": "An",
+      "lastName": "Nguyen",
+      "fullName": "Linh An Nguyen",
+      "gender": "female",
+      "birthDate": "1956-02-11",
+      "age": 69,
+      "conditions": [
+        {
+          "id": 3,
+          "name": "At risk of falling",
+          "status": "active",
+          "onsetDate": "2025-05-30",
+          "notes": "Reports unsteadiness when rising at night; no injuries to date."
+        }
+      ],
+      "medications": [
+        {
+          "id": 3,
+          "name": "Escitalopram 10mg daily, Amlodipine 5mg daily",
+          "status": "active",
+          "dateAsserted": "2025-09-20"
+        }
+      ],
+      "observations": [
+        {
+          "id": 3,
+          "type": "Abbreviated Mental Test Score",
+          "value": 9,
+          "interpretation": "AMTS intact - 9/10",
+          "date": "2025-09-20T12:00:00Z"
+        }
+      ],
+      "immunizations": [
+        {
+          "id": 3,
+          "vaccine": "Influenza vaccine",
+          "status": "completed",
+          "date": "2025-04-03"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "hospitalId": "UR004",
+      "firstName": "Robert",
+      "middleName": "James",
+      "lastName": "Williams",
+      "fullName": "Robert James Williams",
+      "gender": "male",
+      "birthDate": "1940-11-22",
+      "age": 85,
+      "conditions": [
+        {
+          "id": 4,
+          "name": "Accidental fall",
+          "status": "active",
+          "onsetDate": "2025-08-20",
+          "notes": "Multiple falls in last 2 months while inpatient."
+        }
+      ],
+      "medications": [
+        {
+          "id": 4,
+          "name": "Risperidone 2mg, Lorazepam 1mg, Furosemide 40mg, Metoprolol 50mg",
+          "status": "active",
+          "dateAsserted": "2025-09-20"
+        }
+      ],
+      "observations": [
+        {
+          "id": 4,
+          "type": "Abbreviated Mental Test Score",
+          "value": 4,
+          "interpretation": "AMTS severely impaired - 4/10",
+          "date": "2025-09-20T12:00:00Z"
+        }
+      ],
+      "immunizations": [
+        {
+          "id": 4,
+          "vaccine": "Pneumococcal vaccine",
+          "status": "completed",
+          "date": "2024-09-15"
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "hospitalId": "UR005",
+      "firstName": "Mary",
+      "middleName": "Elizabeth",
+      "lastName": "Davis",
+      "fullName": "Mary Elizabeth Davis",
+      "gender": "female",
+      "birthDate": "1950-06-14",
+      "age": 75,
+      "conditions": [
+        {
+          "id": 5,
+          "name": "Anxiety disorder",
+          "status": "active",
+          "onsetDate": "2024-01-10",
+          "notes": "Moderate anxiety affecting mobility confidence."
+        }
+      ],
+      "medications": [
+        {
+          "id": 5,
+          "name": "Sertraline 50mg, Atorvastatin 20mg",
+          "status": "active",
+          "dateAsserted": "2025-09-20"
+        }
+      ],
+      "observations": [
+        {
+          "id": 5,
+          "type": "Abbreviated Mental Test Score",
+          "value": 8,
+          "interpretation": "AMTS mildly impaired - 8/10",
+          "date": "2025-09-20T12:00:00Z"
+        }
+      ],
+      "immunizations": [
+        {
+          "id": 5,
+          "vaccine": "Influenza vaccine",
+          "status": "completed",
+          "date": "2025-03-20"
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "hospitalId": "UR006",
+      "firstName": "Michael",
+      "middleName": "David",
+      "lastName": "Johnson",
+      "fullName": "Michael David Johnson",
+      "gender": "male",
+      "birthDate": "1958-02-28",
+      "age": 67,
+      "conditions": [
+        {
+          "id": 6,
+          "name": "Type 2 diabetes mellitus",
+          "status": "resolved",
+          "onsetDate": "2022-05-15",
+          "notes": "Well-controlled diabetes, active lifestyle, no falls history."
+        }
+      ],
+      "medications": [
+        {
+          "id": 6,
+          "name": "Metformin 1000mg, Vitamin D3 1000IU",
+          "status": "active",
+          "dateAsserted": "2025-09-20"
+        }
+      ],
+      "observations": [
+        {
+          "id": 6,
+          "type": "Abbreviated Mental Test Score",
+          "value": 10,
+          "interpretation": "AMTS intact - 10/10",
+          "date": "2025-09-20T12:00:00Z"
+        }
+      ],
+      "immunizations": [
+        {
+          "id": 6,
+          "vaccine": "COVID-19 vaccine",
+          "status": "completed",
+          "date": "2025-01-12"
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "hospitalId": "UR007",
+      "firstName": "Susan",
+      "middleName": "Marie",
+      "lastName": "Brown",
+      "fullName": "Susan Marie Brown",
+      "gender": "female",
+      "birthDate": "1935-09-05",
+      "age": 90,
+      "conditions": [
+        {
+          "id": 7,
+          "name": "Major depressive disorder",
+          "status": "active",
+          "onsetDate": "2024-11-01",
+          "notes": "Severe depression with multiple recent falls."
+        }
+      ],
+      "medications": [
+        {
+          "id": 7,
+          "name": "Venlafaxine 75mg, Zolpidem 10mg, Amlodipine 5mg",
+          "status": "active",
+          "dateAsserted": "2025-09-20"
+        }
+      ],
+      "observations": [
+        {
+          "id": 7,
+          "type": "Abbreviated Mental Test Score",
+          "value": 5,
+          "interpretation": "AMTS moderately impaired - 5/10",
+          "date": "2025-09-20T12:00:00Z"
+        }
+      ],
+      "immunizations": [
+        {
+          "id": 7,
+          "vaccine": "Shingles vaccine",
+          "status": "completed",
+          "date": "2024-06-30"
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "hospitalId": "UR008",
+      "firstName": "Charles",
+      "middleName": "Edward",
+      "lastName": "Wilson",
+      "fullName": "Charles Edward Wilson",
+      "gender": "male",
+      "birthDate": "1946-12-01",
+      "age": 79,
+      "conditions": [
+        {
+          "id": 8,
+          "name": "Accidental fall",
+          "status": "resolved",
+          "onsetDate": "2025-01-20",
+          "notes": "Fall 8 months ago, some lingering balance issues."
+        }
+      ],
+      "medications": [
+        {
+          "id": 8,
+          "name": "Lisinopril 10mg, Hydrochlorothiazide 25mg",
+          "status": "active",
+          "dateAsserted": "2025-09-20"
+        }
+      ],
+      "observations": [
+        {
+          "id": 8,
+          "type": "Abbreviated Mental Test Score",
+          "value": 6,
+          "interpretation": "AMTS moderately impaired - 6/10",
+          "date": "2025-09-20T12:00:00Z"
+        }
+      ],
+      "immunizations": [
+        {
+          "id": 8,
+          "vaccine": "Tetanus booster",
+          "status": "completed",
+          "date": "2024-11-18"
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "hospitalId": "UR009",
+      "firstName": "Rosa",
+      "middleName": "Isabel",
+      "lastName": "Garcia",
+      "fullName": "Rosa Isabel Garcia",
+      "gender": "female",
+      "birthDate": "1960-07-18",
+      "age": 65,
+      "conditions": [
+        {
+          "id": 9,
+          "name": "Hypertension",
+          "status": "inactive",
+          "onsetDate": "2021-03-10",
+          "notes": "Well-controlled hypertension, active and independent."
+        }
+      ],
+      "medications": [
+        {
+          "id": 9,
+          "name": "Lisinopril 5mg",
+          "status": "active",
+          "dateAsserted": "2025-09-20"
+        }
+      ],
+      "observations": [
+        {
+          "id": 9,
+          "type": "Abbreviated Mental Test Score",
+          "value": 9,
+          "interpretation": "AMTS intact - 9/10",
+          "date": "2025-09-20T12:00:00Z"
+        }
+      ],
+      "immunizations": [
+        {
+          "id": 9,
+          "vaccine": "HPV vaccine",
+          "status": "completed",
+          "date": "2025-02-14"
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "hospitalId": "UR010",
+      "firstName": "Frank",
+      "middleName": "Joseph",
+      "lastName": "Miller",
+      "fullName": "Frank Joseph Miller",
+      "gender": "male",
+      "birthDate": "1938-01-30",
+      "age": 87,
+      "conditions": [
+        {
+          "id": 10,
+          "name": "Alzheimer disease",
+          "status": "active",
+          "onsetDate": "2023-06-01",
+          "notes": "Early stage Alzheimer with confusion and recent falls."
+        }
+      ],
+      "medications": [
+        {
+          "id": 10,
+          "name": "Donepezil 10mg, Quetiapine 25mg, Hydrochlorothiazide 50mg, Levodopa 250mg",
+          "status": "active",
+          "dateAsserted": "2025-09-20"
+        }
+      ],
+      "observations": [
+        {
+          "id": 10,
+          "type": "Abbreviated Mental Test Score",
+          "value": 2,
+          "interpretation": "AMTS severely impaired - 2/10",
+          "date": "2025-09-20T12:00:00Z"
+        }
+      ],
+      "immunizations": [
+        {
+          "id": 10,
+          "vaccine": "Pneumococcal vaccine",
+          "status": "completed",
+          "date": "2024-08-05"
+        }
+      ]
+    }
+  ],
+  "assessments": [
+    {
+      "id": 1762069870360,
+      "part1": {
+        "recentFalls": "3to12",
+        "highRiskMeds": "two",
+        "psychological": "severe",
+        "cognitive": "severe"
+      },
+      "part2": {
+        "vision": false,
+        "mobility": false,
+        "transfers": false,
+        "behaviours": false,
+        "adl": false,
+        "equipment": false,
+        "footwear": false,
+        "environment": false,
+        "nutrition": false,
+        "continence": false,
+        "other": false
+      },
+      "risk_score": 15,
+      "risk_level": "MEDIUM",
+      "patientId": "3",
+      "completed": true,
+      "timestamp": "2025-11-02T07:51:10.359Z"
+    },
+    {
+      "id": 1762069901014,
+      "part1": {
+        "recentFalls": "3to12",
+        "highRiskMeds": "two",
+        "psychological": "mild",
+        "cognitive": "severe"
+      },
+      "part2": {
+        "vision": false,
+        "mobility": false,
+        "transfers": false,
+        "behaviours": false,
+        "adl": false,
+        "equipment": false,
+        "footwear": false,
+        "environment": false,
+        "nutrition": false,
+        "continence": false,
+        "other": false
+      },
+      "risk_score": 13,
+      "risk_level": "MEDIUM",
+      "patientId": "3",
+      "completed": true,
+      "timestamp": "2025-11-02T07:51:41.014Z"
+    },
+    {
+      "patient_id": "2",
+      "patient_info": {
+        "id": "2",
+        "name": "Paul Richard Anderson",
+        "birthDate": "1962-03-25",
+        "gender": "male",
+        "age": 63,
+        "hospital_id": "UR012",
+        "medical_history": [
+          "Myocardial infarction (inactive)"
+        ],
+        "medications": [
+          "Aspirin 81mg, Atorvastatin 40mg"
+        ],
+        "observations": [
+          "Abbreviated Mental Test Score: 10 - AMTS intact - 10/10"
+        ],
+        "amts_score": 10,
+        "immunizations": [
+          "COVID-19 booster on 2025-05-10"
+        ]
+      },
+      "assessments": [
+        {
+          "part1": {
+            "recentFalls": {
+              "value": "inpatient",
+              "label": "One or more in last 3 months while inpatient/resident"
+            },
+            "highRiskMeds": {
+              "value": "two",
+              "label": "Taking two high-risk medications"
+            },
+            "psychological": {
+              "value": "mild",
+              "label": "Mild"
+            },
+            "cognitive": {
+              "value": "intact",
+              "label": "Intact"
+            }
+          },
+          "part2": {
+            "vision": {
+              "value": false,
+              "label": "Vision"
+            },
+            "mobility": {
+              "value": false,
+              "label": "Mobility"
+            },
+            "transfers": {
+              "value": false,
+              "label": "Transfers"
+            },
+            "behaviours": {
+              "value": false,
+              "label": "Behaviours"
+            },
+            "adl": {
+              "value": false,
+              "label": "Activities of Daily Living (A.D.L's)"
+            },
+            "equipment": {
+              "value": false,
+              "label": "Unsafe use of equipment"
+            },
+            "footwear": {
+              "value": false,
+              "label": "Footwear/Clothing"
+            },
+            "environment": {
+              "value": false,
+              "label": "Environment"
+            },
+            "nutrition": {
+              "value": false,
+              "label": "Nutrition"
+            },
+            "continence": {
+              "value": false,
+              "label": "Continence"
+            },
+            "other": {
+              "value": true,
+              "label": "Other"
+            }
+          },
+          "risk_score": 14,
+          "risk_level": "MEDIUM",
+          "assessment_id": "c5cbe56f-2530-43ae-b36d-6da5e711c807",
+          "timestamp": "2025-11-02T08:19:55.554Z"
+        },
+        {
+          "part1": {
+            "recentFalls": {
+              "value": "inpatient",
+              "label": "One or more in last 3 months while inpatient/resident"
+            },
+            "highRiskMeds": {
+              "value": "two",
+              "label": "Taking two high-risk medications"
+            },
+            "psychological": {
+              "value": "mild",
+              "label": "Mild"
+            },
+            "cognitive": {
+              "value": "severe",
+              "label": "Severe"
+            }
+          },
+          "part2": {
+            "vision": {
+              "value": true,
+              "label": "Vision"
+            },
+            "mobility": {
+              "value": true,
+              "label": "Mobility"
+            },
+            "transfers": {
+              "value": true,
+              "label": "Transfers"
+            },
+            "behaviours": {
+              "value": true,
+              "label": "Behaviours"
+            },
+            "adl": {
+              "value": false,
+              "label": "Activities of Daily Living (A.D.L's)"
+            },
+            "equipment": {
+              "value": false,
+              "label": "Unsafe use of equipment"
+            },
+            "footwear": {
+              "value": false,
+              "label": "Footwear/Clothing"
+            },
+            "environment": {
+              "value": true,
+              "label": "Environment"
+            },
+            "nutrition": {
+              "value": true,
+              "label": "Nutrition"
+            },
+            "continence": {
+              "value": true,
+              "label": "Continence"
+            },
+            "other": {
+              "value": false,
+              "label": "Other"
+            }
+          },
+          "risk_score": 17,
+          "risk_level": "HIGH",
+          "assessment_id": "e25fa5d7-6b3e-4b32-89ad-0dbe3d303d68",
+          "timestamp": "2025-11-02T08:24:21.420Z"
+        }
+      ]
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "username": "admin",
+      "email": "admin@inlignx.com",
+      "firstName": "System",
+      "lastName": "Administrator",
+      "role": "admin"
+    }
+  ]
+}

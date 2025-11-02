@@ -1,0 +1,460 @@
+{
+  "patients": [
+    {
+      "id": "patient-011",
+      "hospitalId": "UR011",
+      "firstName": "Betty",
+      "middleName": "Ann",
+      "lastName": "Taylor",
+      "fullName": "Betty Ann Taylor",
+      "gender": "female",
+      "birthDate": "1952-10-12",
+      "age": 73,
+      "conditions": [
+        {
+          "id": "condition-011",
+          "name": "Epilepsy",
+          "status": "active",
+          "onsetDate": "2020-08-15",
+          "notes": "Well-controlled epilepsy, occasional balance concerns."
+        }
+      ],
+      "medications": [
+        {
+          "id": "medication-011",
+          "name": "Phenytoin 300mg, Citalopram 20mg",
+          "status": "active",
+          "dateAsserted": "2025-09-20"
+        }
+      ],
+      "observations": [
+        {
+          "id": "observation-011",
+          "type": "Abbreviated Mental Test Score",
+          "value": 8,
+          "interpretation": "AMTS mildly impaired - 8/10",
+          "date": "2025-09-20T12:00:00Z"
+        }
+      ],
+      "immunizations": [
+        {
+          "id": "immunization-011",
+          "vaccine": "Influenza vaccine",
+          "status": "completed",
+          "date": "2025-04-22"
+        }
+      ]
+    },
+    {
+      "id": "patient-012",
+      "hospitalId": "UR012",
+      "firstName": "Paul",
+      "middleName": "Richard",
+      "lastName": "Anderson",
+      "fullName": "Paul Richard Anderson",
+      "gender": "male",
+      "birthDate": "1962-03-25",
+      "age": 63,
+      "conditions": [
+        {
+          "id": "condition-012",
+          "name": "Myocardial infarction",
+          "status": "inactive",
+          "onsetDate": "2022-11-08",
+          "notes": "Previous MI, now fully recovered with regular exercise."
+        }
+      ],
+      "medications": [
+        {
+          "id": "medication-012",
+          "name": "Aspirin 81mg, Atorvastatin 40mg",
+          "status": "active",
+          "dateAsserted": "2025-09-20"
+        }
+      ],
+      "observations": [
+        {
+          "id": "observation-012",
+          "type": "Abbreviated Mental Test Score",
+          "value": 10,
+          "interpretation": "AMTS intact - 10/10",
+          "date": "2025-09-20T12:00:00Z"
+        }
+      ],
+      "immunizations": [
+        {
+          "id": "immunization-012",
+          "vaccine": "COVID-19 booster",
+          "status": "completed",
+          "date": "2025-05-10"
+        }
+      ]
+    },
+    {
+      "id": "patient-003",
+      "hospitalId": "UR003",
+      "firstName": "Linh",
+      "middleName": "An",
+      "lastName": "Nguyen",
+      "fullName": "Linh An Nguyen",
+      "gender": "female",
+      "birthDate": "1956-02-11",
+      "age": 69,
+      "conditions": [
+        {
+          "id": "condition-003",
+          "name": "At risk of falling",
+          "status": "active",
+          "onsetDate": "2025-05-30",
+          "notes": "Reports unsteadiness when rising at night; no injuries to date."
+        }
+      ],
+      "medications": [
+        {
+          "id": "medication-003",
+          "name": "Escitalopram 10mg daily, Amlodipine 5mg daily",
+          "status": "active",
+          "dateAsserted": "2025-09-20"
+        }
+      ],
+      "observations": [
+        {
+          "id": "observation-003",
+          "type": "Abbreviated Mental Test Score",
+          "value": 9,
+          "interpretation": "AMTS intact - 9/10",
+          "date": "2025-09-20T12:00:00Z"
+        }
+      ],
+      "immunizations": [
+        {
+          "id": "immunization-003",
+          "vaccine": "Influenza vaccine",
+          "status": "completed",
+          "date": "2025-04-03"
+        }
+      ]
+    },
+    {
+      "id": "patient-004",
+      "hospitalId": "UR004",
+      "firstName": "Robert",
+      "middleName": "James",
+      "lastName": "Williams",
+      "fullName": "Robert James Williams",
+      "gender": "male",
+      "birthDate": "1940-11-22",
+      "age": 85,
+      "conditions": [
+        {
+          "id": "condition-004",
+          "name": "Accidental fall",
+          "status": "active",
+          "onsetDate": "2025-08-20",
+          "notes": "Multiple falls in last 2 months while inpatient."
+        }
+      ],
+      "medications": [
+        {
+          "id": "medication-004",
+          "name": "Risperidone 2mg, Lorazepam 1mg, Furosemide 40mg, Metoprolol 50mg",
+          "status": "active",
+          "dateAsserted": "2025-09-20"
+        }
+      ],
+      "observations": [
+        {
+          "id": "observation-004",
+          "type": "Abbreviated Mental Test Score",
+          "value": 4,
+          "interpretation": "AMTS severely impaired - 4/10",
+          "date": "2025-09-20T12:00:00Z"
+        }
+      ],
+      "immunizations": [
+        {
+          "id": "immunization-004",
+          "vaccine": "Pneumococcal vaccine",
+          "status": "completed",
+          "date": "2024-09-15"
+        }
+      ]
+    },
+    {
+      "id": "patient-005",
+      "hospitalId": "UR005",
+      "firstName": "Mary",
+      "middleName": "Elizabeth",
+      "lastName": "Davis",
+      "fullName": "Mary Elizabeth Davis",
+      "gender": "female",
+      "birthDate": "1950-06-14",
+      "age": 75,
+      "conditions": [
+        {
+          "id": "condition-005",
+          "name": "Anxiety disorder",
+          "status": "active",
+          "onsetDate": "2024-01-10",
+          "notes": "Moderate anxiety affecting mobility confidence."
+        }
+      ],
+      "medications": [
+        {
+          "id": "medication-005",
+          "name": "Sertraline 50mg, Atorvastatin 20mg",
+          "status": "active",
+          "dateAsserted": "2025-09-20"
+        }
+      ],
+      "observations": [
+        {
+          "id": "observation-005",
+          "type": "Abbreviated Mental Test Score",
+          "value": 8,
+          "interpretation": "AMTS mildly impaired - 8/10",
+          "date": "2025-09-20T12:00:00Z"
+        }
+      ],
+      "immunizations": [
+        {
+          "id": "immunization-005",
+          "vaccine": "Influenza vaccine",
+          "status": "completed",
+          "date": "2025-03-20"
+        }
+      ]
+    },
+    {
+      "id": "patient-006",
+      "hospitalId": "UR006",
+      "firstName": "Michael",
+      "middleName": "David",
+      "lastName": "Johnson",
+      "fullName": "Michael David Johnson",
+      "gender": "male",
+      "birthDate": "1958-02-28",
+      "age": 67,
+      "conditions": [
+        {
+          "id": "condition-006",
+          "name": "Type 2 diabetes mellitus",
+          "status": "resolved",
+          "onsetDate": "2022-05-15",
+          "notes": "Well-controlled diabetes, active lifestyle, no falls history."
+        }
+      ],
+      "medications": [
+        {
+          "id": "medication-006",
+          "name": "Metformin 1000mg, Vitamin D3 1000IU",
+          "status": "active",
+          "dateAsserted": "2025-09-20"
+        }
+      ],
+      "observations": [
+        {
+          "id": "observation-006",
+          "type": "Abbreviated Mental Test Score",
+          "value": 10,
+          "interpretation": "AMTS intact - 10/10",
+          "date": "2025-09-20T12:00:00Z"
+        }
+      ],
+      "immunizations": [
+        {
+          "id": "immunization-006",
+          "vaccine": "COVID-19 vaccine",
+          "status": "completed",
+          "date": "2025-01-12"
+        }
+      ]
+    },
+    {
+      "id": "patient-007",
+      "hospitalId": "UR007",
+      "firstName": "Susan",
+      "middleName": "Marie",
+      "lastName": "Brown",
+      "fullName": "Susan Marie Brown",
+      "gender": "female",
+      "birthDate": "1935-09-05",
+      "age": 90,
+      "conditions": [
+        {
+          "id": "condition-007",
+          "name": "Major depressive disorder",
+          "status": "active",
+          "onsetDate": "2024-11-01",
+          "notes": "Severe depression with multiple recent falls."
+        }
+      ],
+      "medications": [
+        {
+          "id": "medication-007",
+          "name": "Venlafaxine 75mg, Zolpidem 10mg, Amlodipine 5mg",
+          "status": "active",
+          "dateAsserted": "2025-09-20"
+        }
+      ],
+      "observations": [
+        {
+          "id": "observation-007",
+          "type": "Abbreviated Mental Test Score",
+          "value": 5,
+          "interpretation": "AMTS moderately impaired - 5/10",
+          "date": "2025-09-20T12:00:00Z"
+        }
+      ],
+      "immunizations": [
+        {
+          "id": "immunization-007",
+          "vaccine": "Shingles vaccine",
+          "status": "completed",
+          "date": "2024-06-30"
+        }
+      ]
+    },
+    {
+      "id": "patient-008",
+      "hospitalId": "UR008",
+      "firstName": "Charles",
+      "middleName": "Edward",
+      "lastName": "Wilson",
+      "fullName": "Charles Edward Wilson",
+      "gender": "male",
+      "birthDate": "1946-12-01",
+      "age": 79,
+      "conditions": [
+        {
+          "id": "condition-008",
+          "name": "Accidental fall",
+          "status": "resolved",
+          "onsetDate": "2025-01-20",
+          "notes": "Fall 8 months ago, some lingering balance issues."
+        }
+      ],
+      "medications": [
+        {
+          "id": "medication-008",
+          "name": "Lisinopril 10mg, Hydrochlorothiazide 25mg",
+          "status": "active",
+          "dateAsserted": "2025-09-20"
+        }
+      ],
+      "observations": [
+        {
+          "id": "observation-008",
+          "type": "Abbreviated Mental Test Score",
+          "value": 6,
+          "interpretation": "AMTS moderately impaired - 6/10",
+          "date": "2025-09-20T12:00:00Z"
+        }
+      ],
+      "immunizations": [
+        {
+          "id": "immunization-008",
+          "vaccine": "Tetanus booster",
+          "status": "completed",
+          "date": "2024-11-18"
+        }
+      ]
+    },
+    {
+      "id": "patient-009",
+      "hospitalId": "UR009",
+      "firstName": "Rosa",
+      "middleName": "Isabel",
+      "lastName": "Garcia",
+      "fullName": "Rosa Isabel Garcia",
+      "gender": "female",
+      "birthDate": "1960-07-18",
+      "age": 65,
+      "conditions": [
+        {
+          "id": "condition-009",
+          "name": "Hypertension",
+          "status": "inactive",
+          "onsetDate": "2021-03-10",
+          "notes": "Well-controlled hypertension, active and independent."
+        }
+      ],
+      "medications": [
+        {
+          "id": "medication-009",
+          "name": "Lisinopril 5mg",
+          "status": "active",
+          "dateAsserted": "2025-09-20"
+        }
+      ],
+      "observations": [
+        {
+          "id": "observation-009",
+          "type": "Abbreviated Mental Test Score",
+          "value": 9,
+          "interpretation": "AMTS intact - 9/10",
+          "date": "2025-09-20T12:00:00Z"
+        }
+      ],
+      "immunizations": [
+        {
+          "id": "immunization-009",
+          "vaccine": "HPV vaccine",
+          "status": "completed",
+          "date": "2025-02-14"
+        }
+      ]
+    },
+    {
+      "id": "patient-010",
+      "hospitalId": "UR010",
+      "firstName": "Frank",
+      "middleName": "Joseph",
+      "lastName": "Miller",
+      "fullName": "Frank Joseph Miller",
+      "gender": "male",
+      "birthDate": "1938-01-30",
+      "age": 87,
+      "conditions": [
+        {
+          "id": "condition-010",
+          "name": "Alzheimer's disease",
+          "status": "active",
+          "onsetDate": "2023-06-01",
+          "notes": "Early stage Alzheimer's with confusion and recent falls."
+        }
+      ],
+      "medications": [
+        {
+          "id": "medication-010",
+          "name": "Donepezil 10mg, Quetiapine 25mg, Hydrochlorothiazide 50mg, Levodopa 250mg",
+          "status": "active",
+          "dateAsserted": "2025-09-20"
+        }
+      ],
+      "observations": [
+        {
+          "id": "observation-010",
+          "type": "Abbreviated Mental Test Score",
+          "value": 2,
+          "interpretation": "AMTS severely impaired - 2/10",
+          "date": "2025-09-20T12:00:00Z"
+        }
+      ],
+      "immunizations": [
+        {
+          "id": "immunization-010",
+          "vaccine": "Pneumococcal vaccine",
+          "status": "completed",
+          "date": "2024-08-05"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "total_patients": 10,
+    "last_updated": "2025-10-25",
+    "data_source": "Converted from FHIR Bundle",
+    "format_version": "1.0"
+  }
+}
