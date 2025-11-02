@@ -18,7 +18,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import { getAssessmentResult } from "../api/fhir";
+import { getAssessmentResult } from "../api/frat";
 import {
   Chart as ChartJS,
   ArcElement,

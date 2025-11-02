@@ -7,7 +7,7 @@ import {
   saveAssessmentDraft,
   submitAssessment,
   getPatientInfo,
-} from "../api/fhir";
+} from "../api/frat";
 
 // Initial state for Part 1 and Part 2
 const initialPart1 = {

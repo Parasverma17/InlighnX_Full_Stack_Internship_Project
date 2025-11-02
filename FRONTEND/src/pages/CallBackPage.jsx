@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { smartCallback } from "../api/fhir";
+import { smartCallback } from "../api/frat";
 
 function CallBackPage() {
   const navigate = useNavigate();

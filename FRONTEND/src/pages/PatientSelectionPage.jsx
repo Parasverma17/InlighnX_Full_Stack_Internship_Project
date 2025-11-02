@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Loader from "../components/Loader";
-import { getAllPatients } from "../api/fhir";
+import { getAllPatients } from "../api/frat";
 
 export default function PatientSelectionPage() {
   const [patients, setPatients] = useState([]);

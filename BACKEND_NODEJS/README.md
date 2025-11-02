@@ -1,28 +1,50 @@
-# InlignX Backend - Node.js/Express
+# InlighnX Backend - Node.js/Express
 
-This is the Node.js/Express.js backend for the InlignX healthcare application, converted from the original Python/Flask implementation.
+This is the Node.js/Express.js backend for the **InlighnX Fall Risk Assessment Tool**, a comprehensive healthcare application for assessing and managing fall risk in elderly patients (60+ years).
+
+## Overview
+
+InlighnX Backend provides a robust RESTful API for patient management, fall risk assessments, and data persistence. The system uses a simplified JSON-based data structure stored in `bundle.json` for easy data management and manipulation.
 
 ## Features
 
-- **Simple Patient Data Management**: Converted from FHIR format to simple JSON for easier handling
-- **Assessment System**: Complete fall risk assessment functionality
-- **Authentication**: JWT-based authentication with session management
-- **RESTful API**: Clean and well-documented API endpoints
-- **Data Persistence**: JSON file-based storage (easily replaceable with database)
+- **Patient Data Management**: Complete patient profiles with demographics, medical history, medications, and observations
+- **Fall Risk Assessment System**:
+  - Part 1: Scored sections (Falls history, Medications, Psychological factors, Cognitive impairment)
+  - Part 2: Yes/No risk factor checklist (11 factors including vision, mobility, transfers, etc.)
+  - Automatic risk scoring and level calculation (Low, Medium, High)
+- **Session-Based State Management**: Patient selection and draft assessments stored in Express sessions
+- **RESTful API**: Clean, well-documented endpoints with proper error handling
+- **JSON File Storage**: Single `bundle.json` file for all application data
+- **CORS Enabled**: Configured for React frontend on port 3000
+
+## Technology Stack
+
+- **Runtime**: Node.js
+- **Framework**: Express.js 4.18.2
+- **Session Management**: express-session
+- **Authentication**: JWT + bcryptjs (ready for implementation)
+- **Data Storage**: JSON files (fs-extra)
+- **CORS**: Configured for localhost:3000
 
 ## Quick Start
 
-### 1. Install Dependencies
+### 1. Prerequisites
+
+- Node.js (v14 or higher)
+- npm or yarn
+
+### 2. Install Dependencies
 
 ```bash
 cd BACKEND_NODEJS
 npm install
 ```
 
-### 2. Start the Server
+### 3. Start the Server
 
 ```bash
-# Development mode (with auto-reload)
+# Development mode (with auto-reload using nodemon)
 npm run dev
 
 # Production mode
@@ -31,9 +53,29 @@ npm start
 
 The server will run on `http://localhost:5000`
 
+### 4. Verify Server is Running
+
+```bash
+curl http://localhost:5000/health
+```
+
+Expected response:
+
+```json
+{
+  "status": "OK",
+  "message": "InlignX Backend is running",
+  "timestamp": "2025-11-02T..."
+}
+```
+
 ## API Endpoints
 
-### Authentication
+### Health Check
+
+- `GET /health` - Server health check and status
+
+### Authentication (Routes defined, ready for implementation)
 
 - `POST /auth/login` - User login
 - `POST /auth/register` - User registration
@@ -42,41 +84,67 @@ The server will run on `http://localhost:5000`
 
 ### Patients
 
-- `GET /patient/list` - Get all patients (basic info)
-- `GET /patient/:id` - Get specific patient and set in session
-- `GET /patient/info` - Get current patient info (requires auth)
-- `GET /patient/conditions` - Get patient conditions
-- `GET /patient/medications` - Get patient medications
-- `GET /patient/observations` - Get patient observations
-- `GET /patient/immunizations` - Get patient immunizations
+#### Get All Patients
 
-### Assessments
+```
+GET /patient/list
+```
 
-- `GET /assessment/draft` - Get assessment draft from session
-- `POST /assessment/draft` - Save assessment draft to session
-- `POST /assessment/submit` - Submit completed assessment
-- `GET /assessment/result` - Get assessment results for current patient
-- `GET /assessment/result/:assessmentId` - Get specific assessment
-- `GET /assessment/all` - Get all assessments (admin)
+Returns array of patients with basic info (id, name, age, gender, etc.)
 
-### Health Check
-
-- `GET /health` - Server health check
-
-## Data Structure
-
-### Patient Data (Simplified from FHIR)
+**Response:**
 
 ```json
 {
-  "id": "patient-001",
-  "hospitalId": "UR001",
-  "firstName": "John",
-  "lastName": "Doe",
-  "fullName": "John Doe",
-  "gender": "male",
-  "birthDate": "1950-01-01",
-  "age": 75,
+  "success": true,
+  "data": [
+    {
+      "id": "1",
+      "hospitalId": "UR011",
+      "fullName": "Betty Ann Taylor",
+      "age": 73,
+      "gender": "female"
+    }
+  ]
+}
+```
+
+#### Select Patient (Sets in Session)
+
+```
+GET /patient/:id
+```
+
+Selects a patient and stores their ID in the session.
+
+**Response:**
+
+```json
+{
+  "success": true,
+  "message": "Patient selected",
+  "patientId": "1"
+}
+```
+
+#### Get Patient Info
+
+```
+GET /patient/info/:id
+```
+
+Returns complete patient information including demographics, conditions, medications, observations, and immunizations.
+
+**Response:**
+
+```json
+{
+  "id": "1",
+  "hospitalId": "UR011",
+  "fullName": "Betty Ann Taylor",
+  "gender": "female",
+  "birthDate": "1952-10-12",
+  "age": 73,
   "conditions": [...],
   "medications": [...],
   "observations": [...],
@@ -84,116 +152,374 @@ The server will run on `http://localhost:5000`
 }
 ```
 
-### Assessment Data
+### Assessments
 
-```json
+#### Submit Assessment
+
+```
+POST /assessment/submit
+Content-Type: application/json
+
 {
-  "assessment_id": "uuid",
-  "timestamp": "2025-10-25T...",
-  "risk_score": 15,
-  "risk_level": "high",
-  "part1": {...},
-  "part2": {...}
+  "patientId": "1",
+  "part1": {
+    "falls": { "score": 5, "answers": {...} },
+    "medications": { "score": 3, "answers": {...} },
+    "psychological": { "score": 2, "answers": {...} },
+    "cognitive": { "score": 5, "answers": {...} }
+  },
+  "part2": {
+    "vision": { "value": true, "label": "Yes" },
+    "mobility": { "value": false, "label": "No" },
+    ...
+  }
 }
 ```
 
-## Default Users
+**Response:**
 
-The system comes with default users for testing:
+```json
+{
+  "success": true,
+  "message": "Assessment submitted successfully",
+  "assessment_id": "uuid",
+  "risk_score": 15,
+  "risk_level": "high"
+}
+```
 
-1. **Admin User**
+#### Get Assessment Result
 
-   - Username: `admin`
-   - Password: `admin123`
-   - Role: `admin`
+```
+GET /assessment/result?patientId=1
+```
 
-2. **Doctor User**
-   - Username: `doctor`
-   - Password: `doctor123`
-   - Role: `doctor`
+Returns the latest assessment for the specified patient.
 
-## Changes from Python/Flask Version
+**Response:**
 
-1. **No FHIR Dependency**: Removed FHIR client and simplified data structure
-2. **Simplified Authentication**: Basic JWT + session-based auth instead of SMART on FHIR
-3. **JSON Storage**: File-based JSON storage instead of complex FHIR server integration
-4. **Express.js Structure**: Modern Express.js patterns with proper middleware
-5. **Better Error Handling**: Comprehensive error handling with meaningful responses
+```json
+{
+  "patient_id": "1",
+  "patient_info": {
+    "name": "Betty Ann Taylor",
+    "id": "1",
+    "birthDate": "1952-10-12",
+    ...
+  },
+  "assessments": [
+    {
+      "assessment_id": "uuid",
+      "timestamp": "2025-11-02T...",
+      "risk_score": 15,
+      "risk_level": "high",
+      "part1": {...},
+      "part2": {...}
+    }
+  ]
+}
+```
+
+## Data Structure
+
+### Bundle.json Structure
+
+The application uses a single `bundle.json` file (located in project root) with the following structure:
+
+```json
+{
+  "patients": [
+    {
+      "id": "1",
+      "hospitalId": "UR011",
+      "firstName": "Betty",
+      "middleName": "Ann",
+      "lastName": "Taylor",
+      "fullName": "Betty Ann Taylor",
+      "gender": "female",
+      "birthDate": "1952-10-12",
+      "age": 73,
+      "conditions": [...],
+      "medications": [...],
+      "observations": [...],
+      "immunizations": [...]
+    }
+  ],
+  "assessments": [
+    {
+      "patient_id": "1",
+      "patient_info": {...},
+      "assessments": [
+        {
+          "assessment_id": "uuid",
+          "timestamp": "2025-11-02T...",
+          "risk_score": 15,
+          "risk_level": "high",
+          "part1": {...},
+          "part2": {...}
+        }
+      ]
+    }
+  ],
+  "users": []
+}
+```
+
+### Assessment Risk Scoring
+
+**Part 1 Scoring:**
+
+- Falls History: 0-25 points
+- Medications: 0-3 points
+- Psychological Factors: 0-2 points
+- Cognitive Impairment: 0-5 points
+
+**Risk Levels:**
+
+- **Low Risk**: Score 0-11
+- **Medium Risk**: Score 12-24
+- **High Risk**: Score 25+
+
+**Part 2 Risk Factors:** (Yes/No checkboxes)
+
+- Vision, Mobility, Transfers, Behaviours, ADL, Equipment, Footwear, Environment, Nutrition, Continence, Other
 
 ## File Structure
 
 ```
 BACKEND_NODEJS/
 ├── data/
-│   ├── patients.json          # Simplified patient data
-│   ├── assessments.json       # Assessment storage
-│   └── users.json            # User accounts
+│   ├── patients.json          # Backup patient data
+│   └── assessments.json       # Backup assessment data
 ├── middleware/
-│   └── auth.js               # Authentication middleware
+│   └── auth.js               # Authentication middleware (JWT)
 ├── routes/
-│   ├── auth.js               # Authentication routes
-│   ├── patient.js            # Patient management routes
-│   └── assessment.js         # Assessment routes
-├── package.json
-├── server.js                 # Main server file
-└── README.md
+│   ├── auth.js               # Authentication endpoints
+│   ├── patient.js            # Patient management endpoints
+│   └── assessment.js         # Assessment submission & retrieval
+├── node_modules/
+├── package.json              # Dependencies and scripts
+├── package-lock.json
+├── server.js                 # Main Express server
+├── test-setup.js            # Testing configuration
+└── README.md                # This file
+
+PROJECT ROOT (../):
+└── bundle.json              # Main data file (patients, assessments, users)
 ```
 
-## Environment Variables
+## Session Management
 
-Create a `.env` file for production:
+The backend uses Express sessions to maintain state:
 
-```env
-PORT=5000
-JWT_SECRET=your-super-secret-key-here
-NODE_ENV=production
+- **Session Storage**: Memory store (use Redis in production)
+- **Session Duration**: 24 hours
+- **Cookie Settings**:
+  - `secure: false` (set to `true` with HTTPS in production)
+  - `httpOnly: true`
+  - `sameSite: 'lax'`
+
+**Session Data:**
+
+```javascript
+req.session = {
+  patientId: "1",           // Currently selected patient
+  assessmentDraft: {...},   // Draft assessment data
+  userId: "user-id"         // Authenticated user ID
+}
 ```
+
+## CORS Configuration
+
+The backend is configured to accept requests from the React frontend:
+
+```javascript
+cors({
+  origin: "http://localhost:3000",
+  credentials: true,
+});
+```
+
+**Important:** Update `origin` in production to match your frontend domain.
+
+## Error Handling
+
+All endpoints return consistent error responses:
+
+```json
+{
+  "error": "Error message",
+  "details": "Additional error details"
+}
+```
+
+**HTTP Status Codes:**
+
+- `200` - Success
+- `201` - Created
+- `400` - Bad Request (validation errors)
+- `404` - Not Found
+- `500` - Internal Server Error
 
 ## Development
 
-### Adding New Routes
+### Adding New Endpoints
 
-1. Create route file in `routes/` directory
-2. Import and register in `server.js`
-3. Add authentication middleware if needed
+1. **Create route handler** in appropriate file (`routes/patient.js`, `routes/assessment.js`, etc.)
+2. **Add validation** for request body/params
+3. **Update bundle.json** structure if needed
+4. **Test endpoint** using Postman or curl
+5. **Update this README** with new endpoint documentation
 
-### Database Integration
+### Example: Adding a new patient endpoint
 
-To replace JSON files with a database:
+```javascript
+// routes/patient.js
+router.get("/patient/search", (req, res) => {
+  const { query } = req.query;
+  const bundleData = readBundleData();
 
-1. Install database driver (mongoose, pg, etc.)
-2. Replace file operations in route handlers
-3. Update data models accordingly
+  const results = bundleData.patients.filter((p) =>
+    p.fullName.toLowerCase().includes(query.toLowerCase())
+  );
 
-## Testing
+  res.json({ success: true, data: results });
+});
+```
 
-You can test the API using tools like Postman or curl:
+### Testing API Endpoints
+
+**Using curl:**
 
 ```bash
-# Health check
-curl http://localhost:5000/health
-
-# Login
-curl -X POST http://localhost:5000/auth/login \
-  -H "Content-Type: application/json" \
-  -d '{"username":"admin","password":"admin123"}'
-
-# Get patients list
+# Get all patients
 curl http://localhost:5000/patient/list
+
+# Select a patient
+curl http://localhost:5000/patient/1
+
+# Get patient info
+curl http://localhost:5000/patient/info/1
+
+# Submit assessment
+curl -X POST http://localhost:5000/assessment/submit \
+  -H "Content-Type: application/json" \
+  -d '{"patientId":"1","part1":{...},"part2":{...}}'
+
+# Get assessment result
+curl http://localhost:5000/assessment/result?patientId=1
 ```
+
+**Using Postman:**
+
+1. Import endpoints as collection
+2. Set base URL: `http://localhost:5000`
+3. Enable cookies for session management
+4. Test each endpoint with sample data
 
 ## Production Deployment
 
-1. Set environment variables
-2. Use process manager (PM2, Docker, etc.)
-3. Set up reverse proxy (nginx)
-4. Configure SSL/HTTPS
-5. Set up database instead of JSON files
-6. Configure logging and monitoring
+### Recommended Setup
+
+1. **Environment Variables**
+   Create `.env` file:
+
+   ```env
+   PORT=5000
+   NODE_ENV=production
+   SESSION_SECRET=your-super-secret-key-here
+   FRONTEND_URL=https://yourdomain.com
+   ```
+
+2. **Database Migration**
+
+   - Replace `bundle.json` with proper database (MongoDB, PostgreSQL)
+   - Update `readBundleData()` and `writeBundleData()` functions
+   - Add connection pooling and error recovery
+
+3. **Session Store**
+
+   - Use Redis or database-backed session store
+   - Configure session timeout and cleanup
+
+4. **Security Enhancements**
+
+   - Enable HTTPS (set `cookie.secure: true`)
+   - Implement rate limiting
+   - Add request validation (express-validator)
+   - Enable helmet.js for security headers
+   - Implement proper JWT authentication
+
+5. **Process Management**
+
+   ```bash
+   # Using PM2
+   npm install -g pm2
+   pm2 start server.js --name "inlignx-backend"
+   pm2 startup
+   pm2 save
+   ```
+
+6. **Reverse Proxy (nginx)**
+
+   ```nginx
+   server {
+       listen 80;
+       server_name api.yourdomain.com;
+
+       location / {
+           proxy_pass http://localhost:5000;
+           proxy_http_version 1.1;
+           proxy_set_header Upgrade $http_upgrade;
+           proxy_set_header Connection 'upgrade';
+           proxy_set_header Host $host;
+           proxy_cache_bypass $http_upgrade;
+       }
+   }
+   ```
+
+7. **Monitoring & Logging**
+   - Set up Winston or Morgan for logging
+   - Configure error tracking (Sentry, Rollbar)
+   - Monitor server health and performance
+
+## Troubleshooting
+
+### Common Issues
+
+**1. CORS Errors**
+
+- Ensure frontend is running on `http://localhost:3000`
+- Check `withCredentials: true` is set in frontend axios config
+- Verify CORS origin matches frontend URL
+
+**2. Session Not Persisting**
+
+- Check cookie settings in browser
+- Ensure `credentials: true` in CORS config
+- Verify session secret is set
+
+**3. Cannot Find bundle.json**
+
+- Ensure `bundle.json` exists in project root
+- Check file permissions
+- Verify path in route files: `../bundle.json`
+
+**4. Port Already in Use**
+
+```bash
+# Windows
+netstat -ano | findstr :5000
+taskkill /PID <PID> /F
+
+# Linux/Mac
+lsof -ti:5000 | xargs kill -9
+```
 
 ## Contributing
 
-1. Follow the existing code structure
-2. Add proper error handling
-3. Update documentation for new features
-4. Test all endpoints before submitting changes
+1. Follow existing code structure and naming conventions
+2. Add proper error handling for all operations
+3. Update this README when adding new features
+4. Test all endpoints before committing
+5. Use meaningful commit messages
