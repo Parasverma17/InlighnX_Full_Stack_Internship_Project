@@ -673,51 +673,66 @@ footer small {
   border-radius: 14px;
   box-shadow: 0 6px 18px rgba(17, 24, 39, .08);
   overflow: hidden;
-  display: grid;
-  grid-template-rows: 180px 1fr;
+  display: flex;
+  flex-direction: column;
   scroll-snap-align: start;
+}
+
+.testimonial-media {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
 }
 
 .testimonial-media img {
   width: 100%;
-  height: 180px;
+  height: 100%;
   object-fit: cover;
 }
 
 .testimonial-body {
-  padding: 14px 16px 16px;
+  padding: 16px 18px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 /* ✅ Darker quote text for readability (was too light) */
 .testimonial blockquote {
-  margin: 0 0 10px;
+  margin: 0;
   color: #374151; /* readable neutral */
   font-size: 0.98rem;
   line-height: 1.55;
+  flex: 1;
 }
 
 /* =====================
    ✅ Accessible footer bar
    ===================== */
-.testimonial footer {
-  display: grid;
-  gap: 2px;
+.testimonial-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
   padding: 14px 16px;
   background: #7a113b;   /* medical maroon */
   color: #ffe8f2;         /* readable light text */
   text-align: center;
+  margin: 0;
 }
 
 /* ✅ Name & Role colors (high contrast) */
-.testimonial footer .name,
-.testimonial footer strong {
+.testimonial-footer .name,
+.testimonial-footer strong {
   color: #ffffff;          /* pure white for names */
   font-weight: 800;
+  font-size: 1rem;
 }
 
-.testimonial footer .role {
+.testimonial-footer .role,
+.testimonial-footer span {
   color: #ffd6e6;          /* soft pink for roles */
   font-weight: 600;
+  font-size: 0.9rem;
 }
 
 /* =========================================

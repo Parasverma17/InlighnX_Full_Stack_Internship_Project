@@ -7,27 +7,27 @@ export default function AboutSection() {
         <h2>Who We Are?</h2>
         <div>
           <p>
-            FRAT helps clinicians assess falls risk quickly and accurately with an intuitive
-            workflow and secure SMART-on-FHIR integration.
+            InlighnX Fall Risk Assessment Tool (FRAT) helps healthcare professionals assess fall risk quickly and accurately with an intuitive workflow and comprehensive patient management.
           </p>
-          <p>Our design emphasizes clarity, accessibility, and speed.</p>
+          <p>Our design emphasizes clarity, accessibility, and clinical accuracy.</p>
           <p>
-            A desktop, tablet or mobile app that is clinically useful digital tool that can calculate falls risk score (60 years above) after answering a questionnaire, then display it in a user-friendly way and provide guide or action plan for falls prevention strategy.
-          </p>
-          <p>
-            If flag high risk, flag GP (meds) and physiotherapy (mobility) for review.
+            A comprehensive digital platform that calculates fall risk scores for patients aged 60 and above through a standardized questionnaire, displays results in an easy-to-understand format, and provides AI-powered care plans for fall prevention strategies.
           </p>
           <p>
-            It should be interoperable in various setting (hospital, community, residential aged care facility) and healthcare team (General Practitioner, Nurse, caregivers) can access the data and use the app.
+            High-risk patients are automatically flagged for immediate review, with recommendations for medication assessment and mobility evaluation by healthcare professionals.
           </p>
-          <h3>Clinical Importance of Falls Risk</h3>
-          <p>Falls are a leading cause of injury and death among older adults.</p>
-          <p>High healthcare costs and long hospital stays are common outcomes.</p>
-          <p>Prevention through early risk identification is essential.</p>
-          <h3>Digital Intervention Strategy</h3>
-          <p>SMART on FHIR-enabled app to assess and manage falls risk.</p>
-          <p>Integration with EHRs for streamlined workflows.</p>
-          <p>Features include patient data input, scoring, and tailored recommendations.</p>
+          <p>
+            Our platform is designed for use across multiple healthcare settings including hospitals, community clinics, and residential care facilities, with secure access for healthcare teams including physicians, nurses, physiotherapists, and caregivers.
+          </p>
+          <h3>Clinical Importance of Fall Risk Assessment</h3>
+          <p>Falls are a leading cause of injury, hospitalization, and mortality among older adults worldwide.</p>
+          <p>Early identification and intervention can significantly reduce fall incidents and associated healthcare costs.</p>
+          <p>Systematic risk assessment enables targeted prevention strategies and improved patient outcomes.</p>
+          <h3>Our Digital Solution</h3>
+          <p>Real-time fall risk assessment with automated scoring and risk stratification.</p>
+          <p>AI-generated personalized care plans based on individual patient risk factors.</p>
+          <p>Comprehensive patient data management with secure storage and easy retrieval.</p>
+          <p>Interactive dashboards and visualizations for clinical decision support.</p>
         </div>
       </div>
     </section>

@@ -16,11 +16,6 @@ export default function Navbar() {
     }
   };
 
-  // Add dedicated function for About page navigation
-  const goToAbout = () => {
-    navigate("/about");
-  };
-
   return (
     <header className="topbar" role="banner">
       <button
@@ -28,16 +23,12 @@ export default function Navbar() {
         onClick={() => go("home")}
         aria-label="Home"
       >
-        FRAT
+        InlighnX FRAT
       </button>
 
       <nav className="topbar__nav" aria-label="Primary">
         <button className="topbar__link" onClick={() => go("home")}>
           Home
-        </button>
-        {/* Updated: Navigate to About page instead of scrolling to "about" section */}
-        <button className="topbar__link" onClick={goToAbout}>
-          About
         </button>
         <button className="topbar__link" onClick={() => go("results")}>
           Testimonials

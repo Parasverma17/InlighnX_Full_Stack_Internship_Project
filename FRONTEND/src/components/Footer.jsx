@@ -4,11 +4,11 @@ export default function Footer() {
   return (
     <footer className="footer" role="contentinfo">
       <div className="footer-content">
-        <strong className="footer-brand">FRAT</strong>
+        <strong className="footer-brand">InlighnX FRAT</strong>
         <p>
-          © {new Date().getFullYear()} FRAT System. All rights reserved.
+          © {new Date().getFullYear()} InlighnX Fall Risk Assessment Tool. All rights reserved.
           <br />
-          In case of emergency, please call <a href="tel:000">000 (Ambulance)</a>.
+          Empowering healthcare professionals with intelligent fall risk assessment and prevention.
         </p>
       </div>
     </footer>

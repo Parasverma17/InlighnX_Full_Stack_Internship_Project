@@ -8,8 +8,8 @@ export default function HeroSection({ onGetStarted }) {
           Falls <span className="accent">RISK</span> Assessment Tool
         </h1>
         <p className="hero__lead">
-          A modern digital tool that simplifies falls-risk assessment through intuitive
-          design and secure FHIR integration.
+          A comprehensive digital platform that simplifies fall risk assessment through 
+          intelligent automation, data-driven insights, and AI-powered care planning.
         </p>
         <div className="hero__cta">
           <button className="btn btn-primary" onClick={onGetStarted}>

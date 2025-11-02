@@ -7,9 +7,9 @@ export default function ContactSection() {
         <h2>Contact Us</h2>
         <p>Questions or feedback? We’d love to hear from you.</p>
         <ul className="contact-list">
-          <li>📍 Main Street 65, Sydney</li>
-          <li>📞 (555) 111-345345</li>
-          <li>✉️ hello@frat.example</li>
+          <li>📍 45/B MG Road, Bangalore, Karnataka 560001, India</li>
+          <li>📞 +91 80 4567 8900</li>
+          <li>✉️ support@inlighnx.com</li>
         </ul>
       </div>
     </section>

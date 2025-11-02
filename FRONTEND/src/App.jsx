@@ -8,8 +8,6 @@ import AssessmentPage from "./pages/AssessmentPage";
 import ResultsPage from "./pages/ResultsPage";
 import ErrorPage from "./pages/ErrorPage";
 import CallBackPage from "./pages/CallBackPage.jsx";
-import AICarePlanPage from "./pages/AICarePlanPage";
-import AboutPage from "./pages/AboutPage";
 import AccountPage from "./pages/AccountPage";
 import LoginPage from "./pages/LoginPage";
 import Footer from "./components/Footer";
@@ -28,8 +26,6 @@ export default function App() {
           <Route path="/assessment" element={<AssessmentPage />} />
           <Route path="/results" element={<ResultsPage />} />
           <Route path="/callback" element={<CallBackPage />} />
-          <Route path="/ai-careplan" element={<AICarePlanPage />} />
-          <Route path="/about" element={<AboutPage />} />
           <Route path="/account" element={<AccountPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/error" element={<ErrorPage />} />

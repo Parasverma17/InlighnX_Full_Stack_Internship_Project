@@ -7,11 +7,11 @@ export default function ActionsSection({ onSelectPatient, onViewInfo, onStartAss
         <article className="card">
           <div className="card__icon">👤</div>
           <h3>Select Patient</h3>
-          <p>Launch SMART-on-FHIR to choose a patient from the hospital record system.</p>
+          <p>Browse and select patients from your healthcare facility's patient database.</p>
           <ul className="card__list">
-            <li>Secure SMART-on-FHIR flow</li>
-            <li>Pulls demographics &amp; identifiers</li>
-            <li>Works with sandbox or live EHR</li>
+            <li>Secure patient authentication</li>
+            <li>Complete demographics & identifiers</li>
+            <li>Real-time data synchronization</li>
           </ul>
           <button className="btn" onClick={onSelectPatient}>Select Patient</button>
         </article>
@@ -19,11 +19,11 @@ export default function ActionsSection({ onSelectPatient, onViewInfo, onStartAss
         <article className="card">
           <div className="card__icon">📄</div>
           <h3>View Patient Info</h3>
-          <p>Review demographics, risk scores, and existing care plans prior to assessment.</p>
+          <p>Review comprehensive patient information, medical history, and previous assessments.</p>
           <ul className="card__list">
-            <li>Quick risk history</li>
-            <li>Readable summaries</li>
-            <li>WCAG-compliant typography</li>
+            <li>Complete medical history</li>
+            <li>Previous risk assessments</li>
+            <li>Easy-to-read dashboard</li>
           </ul>
           <button className="btn" onClick={onViewInfo}>View Patient Info</button>
         </article>
@@ -31,11 +31,11 @@ export default function ActionsSection({ onSelectPatient, onViewInfo, onStartAss
         <article className="card">
           <div className="card__icon">✅</div>
           <h3>Start Assessment</h3>
-          <p>Complete the FRAT and instantly generate a summary with recommended actions.</p>
+          <p>Complete the fall risk assessment and generate AI-powered care recommendations.</p>
           <ul className="card__list">
-            <li>Nurse-friendly flow</li>
-            <li>Automatic scoring &amp; risk level</li>
-            <li>Shareable care-plan summary</li>
+            <li>User-friendly assessment form</li>
+            <li>Automatic risk scoring</li>
+            <li>AI-generated care plans</li>
           </ul>
           <button className="btn" onClick={onStartAssessment}>Start Assessment</button>
         </article>

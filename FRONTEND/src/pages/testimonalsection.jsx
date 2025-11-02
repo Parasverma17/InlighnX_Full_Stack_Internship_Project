@@ -10,30 +10,30 @@ import clinician3 from "../images/patient.jpg";
 const TESTIMONIALS = [
   {
     id: 1,
-    name: "Nurse Emma L.",
-    role: "RN, Medical Ward",
+    name: "Sarah Johnson, RN",
+    role: "Senior Nurse, Medical Unit",
     quote:
-      "FRAT helped us standardize falls risk assessment without adding clicks. It’s fast, clear, and dependable.",
+      "InlighnX FRAT has transformed our patient assessment workflow. The AI-generated care plans save us valuable time and provide personalized recommendations that truly help our patients.",
     img: clinician1,
-    alt: "Nurse smiling at a desk",
+    alt: "Healthcare professional at work",
   },
   {
     id: 2,
-    name: "Dr. Michael P.",
-    role: "Consultant Geriatrician",
+    name: "Dr. Michael Chen",
+    role: "Geriatric Specialist",
     quote:
-      "The scoring and nurse-friendly flow make FRAT easy to adopt across the team. Highly recommended.",
+      "The automated risk scoring and comprehensive dashboards make it incredibly easy to identify high-risk patients quickly. This tool has become essential in our fall prevention program.",
     img: clinician2,
-    alt: "Doctor in teal shirt with coffee",
+    alt: "Doctor reviewing patient data",
   },
   {
     id: 3,
-    name: "Ward Manager Priya S.",
-    role: "Ward Manager",
+    name: "Lisa Martinez",
+    role: "Clinical Care Coordinator",
     quote:
-      "FRAT integrates with our EHR and keeps documentation tidy. We’ve seen quicker assessments and better handovers.",
+      "The patient data visualization and assessment tracking features are outstanding. We can now monitor trends and implement preventive measures more effectively across our facility.",
     img: clinician3,
-    alt: "Manager in conversation",
+    alt: "Care coordinator managing patient care",
   },
 ];
 
@@ -44,7 +44,7 @@ export default function TestimonialSection() {
         <header className="section-header">
           <h2 className="section-title">Testimonials</h2>
           <p className="section-subtitle">
-            Real stories from clinicians using FRAT every day.
+            Real stories from clinicians using InlighnX FRAT every day.
           </p>
         </header>
 
@@ -75,13 +75,13 @@ export default function TestimonialSection() {
               </div>
               <div className="testimonial-body">
                 <blockquote>
-                  <p>“{t.quote}”</p>
+                  <p>"{t.quote}"</p>
                 </blockquote>
-                <footer>
-                  <strong>{t.name}</strong>
-                  <span>{t.role}</span>
-                </footer>
               </div>
+              <footer className="testimonial-footer">
+                <strong className="name">{t.name}</strong>
+                <span className="role">{t.role}</span>
+              </footer>
             </article>
           ))}
         </div>
