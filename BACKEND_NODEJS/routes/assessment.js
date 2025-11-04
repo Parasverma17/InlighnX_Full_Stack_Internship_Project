@@ -1,38 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const fs = require('fs-extra');
-const path = require('path');
-const { v4: uuidv4 } = require('uuid');
-
-const BUNDLE_FILE = path.join(__dirname, '../../bundle.json');
-
-// Helper function to read bundle data
-const readBundleData = async () => {
-  try {
-    const data = await fs.readJson(BUNDLE_FILE);
-    return data;
-  } catch (error) {
-    console.error('Error reading bundle data:', error);
-    return { patients: [], assessments: [], users: [] };
-  }
-};
-
-// Helper function to write bundle data
-const writeBundleData = async (data) => {
-  try {
-    await fs.writeJson(BUNDLE_FILE, data, { spaces: 2 });
-    return true;
-  } catch (error) {
-    console.error('Error writing bundle data:', error);
-    return false;
-  }
-};
-
-// Helper function to find patient by ID
-const findPatientById = async (patientId) => {
-  const data = await readBundleData();
-  return data.patients.find(patient => patient.id == patientId);
-};
+const Assessment = require('../models/Assessment');
+const Patient = require('../models/Patient');
 
 // Helper function to get option labels
 const getOptionLabels = () => {
@@ -113,38 +82,38 @@ const formatAssessment = (rawAssessment) => {
 
 // Helper function to get patient full info for assessment
 const getPatientFullInfo = async (patientId) => {
-  const patient = await findPatientById(patientId);
+  const patient = await Patient.findById(patientId).lean();
   
   if (!patient) {
     throw new Error('Patient not found');
   }
 
   // Format medical history
-  const medHistory = patient.conditions.map(condition => 
+  const medHistory = (patient.conditions || []).map(condition => 
     `${condition.name} (${condition.status})`
   );
 
   // Format medications
-  const medications = patient.medications.map(med => med.name);
+  const medications = (patient.medications || []).map(med => med.name);
 
   // Format observations
-  const observations = patient.observations.map(obs => 
+  const observations = (patient.observations || []).map(obs => 
     `${obs.type}: ${obs.value} - ${obs.interpretation}`
   );
 
   // Get AMTS score
-  const amtsObservation = patient.observations.find(obs => 
+  const amtsObservation = (patient.observations || []).find(obs => 
     obs.type.toLowerCase().includes('abbreviated mental test')
   );
   const amtsScore = amtsObservation ? amtsObservation.value : null;
 
   // Format immunizations
-  const immunizations = patient.immunizations.map(imm => 
+  const immunizations = (patient.immunizations || []).map(imm => 
     `${imm.vaccine} on ${imm.date}`
   );
 
   return {
-    id: patient.id,
+    id: patient._id.toString(),
     name: patient.fullName,
     birthDate: patient.birthDate,
     gender: patient.gender,
@@ -226,49 +195,46 @@ router.post('/submit', async (req, res) => {
     const formattedAssessment = formatAssessment(data);
     
     // Add risk score and level from frontend
-    formattedAssessment.risk_score = data.risk_score;
-    formattedAssessment.risk_level = data.risk_level;
-    formattedAssessment.assessment_id = uuidv4();
-    formattedAssessment.timestamp = new Date().toISOString();
+    const newAssessmentData = {
+      timestamp: new Date(),
+      risk_score: data.risk_score,
+      risk_level: data.risk_level,
+      part1: formattedAssessment.part1,
+      part2: formattedAssessment.part2
+    };
 
-    // Load bundle data
-    const bundleData = await readBundleData();
-    
     // Find existing assessment for this patient
-    let patientAssessment = bundleData.assessments.find(a => a.patient_id == patientId);
+    let patientAssessment = await Assessment.findOne({ patient_id: patientId });
     
     if (!patientAssessment) {
       // Create new patient assessment entry
-      patientAssessment = {
+      patientAssessment = new Assessment({
         patient_id: patientId,
         patient_info: patientInfo,
-        assessments: []
-      };
-      bundleData.assessments.push(patientAssessment);
+        assessments: [newAssessmentData]
+      });
     } else {
-      // Update patient info
+      // Update patient info and add new assessment
       patientAssessment.patient_info = patientInfo;
+      patientAssessment.assessments.push(newAssessmentData);
     }
     
-    // Add assessment
-    patientAssessment.assessments.push(formattedAssessment);
+    await patientAssessment.save();
 
-    // Save back to bundle file
-    const success = await writeBundleData(bundleData);
-    
-    if (!success) {
-      throw new Error('Failed to save assessment data');
-    }
+    const savedAssessment = patientAssessment.assessments[patientAssessment.assessments.length - 1];
 
     // Store in session for immediate retrieval
-    req.session.assessment_result = formattedAssessment;
+    req.session.assessment_result = savedAssessment;
+
+    console.log('✅ Assessment saved to MongoDB');
 
     res.json({
       success: true,
       message: 'Assessment submitted successfully',
-      assessment_id: formattedAssessment.assessment_id
+      assessment_id: savedAssessment.assessment_id
     });
   } catch (error) {
+    console.error('Error submitting assessment:', error);
     res.status(500).json({
       success: false,
       error: 'Failed to submit assessment',
@@ -290,8 +256,7 @@ router.get('/result', async (req, res) => {
       });
     }
 
-    const bundleData = await readBundleData();
-    const patientAssessment = bundleData.assessments.find(a => a.patient_id == patientId);
+    const patientAssessment = await Assessment.findOne({ patient_id: patientId }).lean();
     
     if (patientAssessment) {
       res.json({
@@ -307,6 +272,7 @@ router.get('/result', async (req, res) => {
       });
     }
   } catch (error) {
+    console.error('Error retrieving assessment result:', error);
     res.status(500).json({
       success: false,
       error: 'Failed to retrieve assessment result',
@@ -328,8 +294,7 @@ router.get('/result/:assessmentId', async (req, res) => {
       });
     }
 
-    const bundleData = await readBundleData();
-    const patientAssessment = bundleData.assessments.find(a => a.patient_id == patientId);
+    const patientAssessment = await Assessment.findOne({ patient_id: patientId }).lean();
     
     if (patientAssessment) {
       const assessment = patientAssessment.assessments.find(a => a.assessment_id === assessmentId);
@@ -389,12 +354,12 @@ router.get('/all', async (req, res) => {
       });
     }
 
-    const bundleData = await readBundleData();
+    const assessments = await Assessment.find({}).lean();
     
     res.json({
       success: true,
-      assessments: bundleData.assessments,
-      total_patients: bundleData.assessments.length
+      assessments: assessments,
+      total_patients: assessments.length
     });
   } catch (error) {
     res.status(500).json({

@@ -1,45 +1,16 @@
 const express = require('express');
 const router = express.Router();
-const fs = require('fs-extra');
-const path = require('path');
-
-// Use bundle.json from root directory
-const BUNDLE_FILE = path.join(__dirname, '../../bundle.json');
-
-// Helper function to read bundle data
-const readBundleData = async () => {
-  try {
-    const data = await fs.readJson(BUNDLE_FILE);
-    return data;
-  } catch (error) {
-    console.error('Error reading bundle data:', error);
-    return { patients: [], assessments: [], users: [] };
-  }
-};
-
-// Helper function to write bundle data
-const writeBundleData = async (data) => {
-  try {
-    await fs.writeJson(BUNDLE_FILE, data, { spaces: 2 });
-    return true;
-  } catch (error) {
-    console.error('Error writing bundle data:', error);
-    return false;
-  }
-};
-
-// Helper function to find patient by ID
-const findPatientById = async (patientId) => {
-  const data = await readBundleData();
-  return data.patients.find(patient => patient.id == patientId);
-};
+const Patient = require('../models/Patient');
 
 // Get all patients (basic info only)
 router.get('/list', async (req, res) => {
   try {
-    const bundleData = await readBundleData();
-    const patientsList = bundleData.patients.map(patient => ({
-      id: patient.id,
+    const patients = await Patient.find({})
+      .select('hospitalId fullName gender age birthDate conditions')
+      .lean();
+
+    const patientsList = patients.map(patient => ({
+      id: patient._id.toString(),
       hospitalId: patient.hospitalId,
       fullName: patient.fullName,
       gender: patient.gender,
@@ -47,7 +18,7 @@ router.get('/list', async (req, res) => {
       birthDate: patient.birthDate,
       conditions: patient.conditions || []
     }));
-    
+
     res.json({
       success: true,
       data: patientsList,
@@ -67,8 +38,8 @@ router.get('/list', async (req, res) => {
 router.get('/info/:id', async (req, res) => {
   try {
     const patientId = req.params.id;
-    const patient = await findPatientById(patientId);
-    
+    const patient = await Patient.findById(patientId).lean();
+
     if (!patient) {
       return res.status(404).json({
         success: false,
@@ -78,9 +49,24 @@ router.get('/info/:id', async (req, res) => {
 
     res.json({
       success: true,
-      data: patient
+      data: {
+        id: patient._id.toString(),
+        hospitalId: patient.hospitalId,
+        firstName: patient.firstName,
+        middleName: patient.middleName,
+        lastName: patient.lastName,
+        fullName: patient.fullName,
+        gender: patient.gender,
+        birthDate: patient.birthDate,
+        age: patient.age,
+        conditions: patient.conditions || [],
+        medications: patient.medications || [],
+        observations: patient.observations || [],
+        immunizations: patient.immunizations || []
+      }
     });
   } catch (error) {
+    console.error('Error in /info/:id endpoint:', error);
     res.status(500).json({
       success: false,
       error: 'Failed to retrieve patient data',
@@ -93,8 +79,8 @@ router.get('/info/:id', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const patientId = req.params.id;
-    const patient = await findPatientById(patientId);
-    
+    const patient = await Patient.findById(patientId).lean();
+
     if (!patient) {
       return res.status(404).json({
         success: false,
@@ -104,13 +90,17 @@ router.get('/:id', async (req, res) => {
 
     // Set patient in session
     req.session.patient_id = patientId;
-    
+
     res.json({
       success: true,
-      data: patient,
+      data: {
+        id: patient._id.toString(),
+        ...patient
+      },
       message: 'Patient selected successfully'
     });
   } catch (error) {
+    console.error('Error in /:id endpoint:', error);
     res.status(500).json({
       success: false,
       error: 'Failed to retrieve patient',
