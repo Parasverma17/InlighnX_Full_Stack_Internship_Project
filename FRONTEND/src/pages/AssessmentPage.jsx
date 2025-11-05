@@ -161,10 +161,8 @@ function AssessmentPage() {
     getPatientInfo(selectedPatientId)
       .then((res) => {
         const patient = res.data.data || res.data;
-        setHelper({
-          meds: patient.medications || [],
-          amts: patient.observations?.find(obs => obs.type === "Abbreviated Mental Test Score")?.value || null,
-        });
+        // Patient info loaded successfully
+        console.log("Patient info loaded:", patient.id);
       })
       .catch((err) => {
         console.error("Error loading patient info:", err);
