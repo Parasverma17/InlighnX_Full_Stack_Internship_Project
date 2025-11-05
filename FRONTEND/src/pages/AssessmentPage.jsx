@@ -136,7 +136,6 @@ function AssessmentPage() {
   const [progress, setProgress] = useState(1);
   const [saving, setSaving] = useState(false);
   const [submitting, setSubmitting] = useState(false);
-  const [helper, setHelper] = useState({ meds: [], amts: null });
   const [patientId, setPatientId] = useState(null);
   const navigate = useNavigate();
 

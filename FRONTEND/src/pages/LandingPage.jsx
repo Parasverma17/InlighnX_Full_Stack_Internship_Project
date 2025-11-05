@@ -10,10 +10,6 @@ import TestimonialSection from "../pages/testimonalsection";
 import ContactSection from "../pages/contactsection";
 
 import { scrollToSection } from "../pages/scrolltosection";
-import { getPatientInfo } from "../api/frat";
-
-const SMART_LAUNCHER_URL = "https://launch.smarthealthit.org/";
-const APP_LAUNCH_URL = "http://localhost:5000/auth/launch";
 
 export default function LandingPage() {
   const navigate = useNavigate();
